@@ -130,7 +130,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+<<<<<<< HEAD
 /node_modules/
 
 /.DS_Store
 views/.DS_Store
+=======
+
+.DS_Store
+>>>>>>> WIP Integrating the Template and fulling the first dashboard
