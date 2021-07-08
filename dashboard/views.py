@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import production_pvrmt
 
 
-def production_dashboard(request):
+def dashboard(request):
     temps = []
     charge = []
     decharge = []
@@ -16,7 +16,7 @@ def production_dashboard(request):
 
     return render(
         request, 
-        "production_dashboard.html",
+        "dashboard.html",
         {
             'labels': temps,
             'charge': charge,
