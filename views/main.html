@@ -8,11 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-<<<<<<< HEAD
     Interface
-=======
-    Black Dashboard by Creative Tim
->>>>>>> WIP Integrating the Template and fulling the first dashboard
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -25,11 +21,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<<<<<<< HEAD
 <body class="black-content">
-=======
-<body class="white-content">
->>>>>>> WIP Integrating the Template and fulling the first dashboard
   <div class="wrapper">
     {% include 'sidebar.html' %}
     
@@ -211,15 +203,9 @@
               zeroLineColor: "transparent",
             },
             ticks: {
-<<<<<<< HEAD
               suggestedMin: 0,
               suggestedMax: 25,
               padding: 5,
-=======
-              suggestedMin: 60,
-              suggestedMax: 125,
-              padding: 20,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               fontColor: "#9a9a9a"
             }
           }],
@@ -232,11 +218,7 @@
               zeroLineColor: "transparent",
             },
             ticks: {
-<<<<<<< HEAD
               padding: 5,
-=======
-              padding: 20,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               fontColor: "#9a9a9a"
             }
           }]
@@ -262,17 +244,10 @@
               pointBackgroundColor: '#d346b1',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#d346b1',
-<<<<<<< HEAD
               pointBorderWidth: 1,
               pointHoverRadius: 1,
               pointHoverBorderWidth: 1,
               pointRadius: 1,
-=======
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               data: {{ charge| safe}},
             },
             {
@@ -286,17 +261,10 @@
               pointBackgroundColor: '#00d6b4',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#00d6b4',
-<<<<<<< HEAD
               pointBorderWidth: 1,
               pointHoverRadius: 1,
               pointHoverBorderWidth: 1,
               pointRadius: 1,
-=======
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               data: {{ decharge| safe}},
             }
           ];
@@ -312,17 +280,10 @@
               pointBackgroundColor: '#d346b1',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#d346b1',
-<<<<<<< HEAD
               pointBorderWidth: 1,
               pointHoverRadius: 1,
               pointHoverBorderWidth: 1,
               pointRadius: 1,
-=======
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               data: {{ charge| safe}},
             }
           ];
@@ -339,17 +300,10 @@
               pointBackgroundColor: '#00d6b4',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#00d6b4',
-<<<<<<< HEAD
               pointBorderWidth: 1,
               pointHoverRadius: 1,
               pointHoverBorderWidth: 1,
               pointRadius: 1,
-=======
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
->>>>>>> WIP Integrating the Template and fulling the first dashboard
               data: {{ decharge| safe}},
             }
           ]
@@ -361,10 +315,7 @@
             datasets: dataSetBoth
           },
           options: gradientChartOptionsConfigurationWithTooltipPurple
-<<<<<<< HEAD
           
-=======
->>>>>>> WIP Integrating the Template and fulling the first dashboard
         };
 
         var myChartData = new Chart(ctx, config);
@@ -372,29 +323,20 @@
         function onClickBoth() {
           var data = myChartData.config.data;
           data.datasets = dataSetBoth;
-<<<<<<< HEAD
           
-=======
-          data.labels = chart_labels;
->>>>>>> WIP Integrating the Template and fulling the first dashboard
           myChartData.update();
         };
 
         function onClickCharge() {
           var data = myChartData.config.data;
           data.datasets = dataSetCharge;
-<<<<<<< HEAD
          
-=======
-          data.labels = chart_labels;
->>>>>>> WIP Integrating the Template and fulling the first dashboard
           myChartData.update();
         };
 
         function onClickDecharge() {
           var data = myChartData.config.data;
           data.datasets = dataSetDecharge;
-<<<<<<< HEAD
           
           myChartData.update();
         };
@@ -438,15 +380,3 @@
 </html>
 
 
-=======
-          data.labels = chart_labels;
-          myChartData.update();
-        };
-    
-      
-    </script>
-
-</body>
-
-</html>
->>>>>>> WIP Integrating the Template and fulling the first dashboard
