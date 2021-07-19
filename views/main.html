@@ -8,7 +8,7 @@
   <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
   <link rel="icon" type="image/png" href="../assets/img/favicon.png">
   <title>
-    Black Dashboard by Creative Tim
+    Interface
   </title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
@@ -21,7 +21,7 @@
   <link href="../assets/demo/demo.css" rel="stylesheet" />
 </head>
 
-<body class="white-content">
+<body class="black-content">
   <div class="wrapper">
     {% include 'sidebar.html' %}
     
@@ -203,9 +203,9 @@
               zeroLineColor: "transparent",
             },
             ticks: {
-              suggestedMin: 60,
-              suggestedMax: 125,
-              padding: 20,
+              suggestedMin: 0,
+              suggestedMax: 25,
+              padding: 5,
               fontColor: "#9a9a9a"
             }
           }],
@@ -218,7 +218,7 @@
               zeroLineColor: "transparent",
             },
             ticks: {
-              padding: 20,
+              padding: 5,
               fontColor: "#9a9a9a"
             }
           }]
@@ -244,10 +244,10 @@
               pointBackgroundColor: '#d346b1',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#d346b1',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+              pointHoverBorderWidth: 1,
+              pointRadius: 1,
               data: {{ charge| safe}},
             },
             {
@@ -261,10 +261,10 @@
               pointBackgroundColor: '#00d6b4',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#00d6b4',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+              pointHoverBorderWidth: 1,
+              pointRadius: 1,
               data: {{ decharge| safe}},
             }
           ];
@@ -280,10 +280,10 @@
               pointBackgroundColor: '#d346b1',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#d346b1',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+              pointHoverBorderWidth: 1,
+              pointRadius: 1,
               data: {{ charge| safe}},
             }
           ];
@@ -300,10 +300,10 @@
               pointBackgroundColor: '#00d6b4',
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: '#00d6b4',
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
+              pointBorderWidth: 1,
+              pointHoverRadius: 1,
+              pointHoverBorderWidth: 1,
+              pointRadius: 1,
               data: {{ decharge| safe}},
             }
           ]
@@ -322,24 +322,25 @@
         function onClickBoth() {
           var data = myChartData.config.data;
           data.datasets = dataSetBoth;
-          data.labels = chart_labels;
+          
           myChartData.update();
         };
 
         function onClickCharge() {
           var data = myChartData.config.data;
           data.datasets = dataSetCharge;
-          data.labels = chart_labels;
+         
           myChartData.update();
         };
 
         function onClickDecharge() {
           var data = myChartData.config.data;
           data.datasets = dataSetDecharge;
-          data.labels = chart_labels;
+          
           myChartData.update();
         };
-    
+
+        
       
     </script>
 
