@@ -7,10 +7,10 @@ def dashboard(request):
     charge = []
     decharge = []
     
-    productionpvrmt = production_pvrmt.objects.exclude(charge=0).exclude(decharge=0).order_by('-dt_utc')
+    productionpvrmt = production_pvrmt.objects.order_by('-dt_utc')[:2888]
 
     for prod in productionpvrmt :
-        temps.append(prod.dt_utc.strftime("%H:%M:%S"))
+        temps.append(prod.dt_utc.strftime("%H:%M"))
         charge.append(prod.charge)
         decharge.append(prod.decharge)
 
