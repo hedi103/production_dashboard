@@ -315,6 +315,7 @@
             datasets: dataSetBoth
           },
           options: gradientChartOptionsConfigurationWithTooltipPurple
+          
         };
 
         var myChartData = new Chart(ctx, config);
@@ -339,11 +340,43 @@
           
           myChartData.update();
         };
+        document.getElementById('productionChart').onclick = function (evt) {
+            var activePoints = chart.getElementsAtEvent(evt);
+            if (activePoints[0]) {
+                var chartData = activePoints[0]['_chart'].config.data;
+                var idx = activePoints[0]['_index'];
 
+                var modal = document.getElementById("myModal");
+                var span = document.getElementsByClassName("close")[0];
+
+                var label = chartData.labels[idx];
+                var charge = chartData.datasets[0].data[idx];
+                var decharge = chartData.datasets[1].data[idx];
+
+                modal.style.display = "block";
+
+                window.onclick = function (event) {
+                    if (event.target == modal) {
+                        modal.style.display = "none";
+                    }
+
+                    document.getElementById("pointLabel").value =label;
+                    document.getElementById("pointCharge").value =charge;
+                    document.getElementById("pointDecharge").value =decharge;
+                }
+
+                span.onclick = function () {
+                    modal.style.display = "none";
+                }
+
+            }
+        };
         
       
-    </script>
+    </script> 
 
 </body>
 
 </html>
+
+
