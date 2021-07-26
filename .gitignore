@@ -130,7 +130,12 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+<<<<<<< HEAD
 /node_modules/
 
 /.DS_Store
 views/.DS_Store
+=======
+
+.DS_Store
+>>>>>>> 9b802ed78b77402cc53c9a504e6b25aecaaa3256
