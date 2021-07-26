@@ -21,7 +21,29 @@ def dashboard(request):
             'labels': temps,
             'charge': charge,
             'decharge': decharge,
-            'colors': []
+            'colors': [],
+            'nbar':'dashboard'
         }
 
+        )
+
+def lissage(request):
+    return render(
+        request, 
+        "lissage.html",
+        {'nbar':'lissage'}
+        )
+
+def decalage_prod(request):
+    return render(
+        request, 
+        "decalage_prod.html",
+        {'nbar':'decalage_prod'}
+        )
+
+def regulation_freq(request):
+    return render(
+        request, 
+        "regulation_freq.html",
+        {'nbar':'regulation_freq'}
         )

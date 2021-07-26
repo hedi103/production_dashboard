@@ -12,27 +12,27 @@
       </a>
     </div>
     <ul class="nav">
-      <li class="active ">
-        <a href="./dashboard.html">
+      <li class="{% if nbar == 'dashboard' %}active{% endif %}">
+        <a href="{% url 'dashboard' %}">
           <i class="tim-icons icon-chart-pie-36"></i>
           <p>Dashboard</p>
         </a>
       </li>
-      <li>
-        <a href="./icons.html">
+      <li class="{% if nbar == 'decalage_prod' %}active{% endif %}">
+        <a href="{% url 'decalage_prod' %}">
           <i class="tim-icons icon-atom"></i>
           <p>Décalage de production</p>
         </a>
       </li>
-      <li>
-        <a href="./map.html">
+      <li class="{% if nbar == 'lissage' %}active{% endif %}">
+        <a href="{% url 'lissage' %}">
           <i class="tim-icons icon-pin"></i>
           <p>Lissage PV</p>
         </a>
       </li>
       
-      <li>
-        <a href="./user.html">
+      <li class="{% if nbar == 'regulation_freq' %}active{% endif %}">
+        <a href="{% url 'regulation_freq' %}">
           <i class="tim-icons icon-single-02"></i>
           <p>Régulation de fréquence</p>
         </a>
