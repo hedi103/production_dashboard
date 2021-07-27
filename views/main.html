@@ -172,6 +172,7 @@
   </script>
 
 <script>
+      var ids = {{ ids| safe}}
       var dataSetBoth= [{
               label: "Charge",
               fill: true,
@@ -193,8 +194,6 @@
               data: {{ decharge| safe}}
             }
           ];
-
-          console.log(dataSetBoth);
       
       var options = {
       type: 'line',
@@ -249,8 +248,39 @@
     }
 
     var ctx2 = document.getElementById('chartJSContainer').getContext('2d');
-    window.test = new Chart(ctx2, options);
-    
+    var graph = new Chart(ctx2, options);
+
+    function saveModif() {
+      $.ajax({
+          type: "POST",
+          url: "{% url 'update_prod_graph' %}",
+          data: {csrfmiddlewaretoken: "{{ csrf_token }}",
+              text: graph.data},
+          success: function (response) {
+            alert(response);
+          }
+    });
+    }
+
+    function saveModif2() {
+        data = {
+          csrfmiddlewaretoken: "{{ csrf_token }}",
+          'charge': JSON.stringify(graph.data.datasets[0].data),
+          'decharge': JSON.stringify(graph.data.datasets[1].data),
+          'ids':"{{ ids| safe}}"
+        }
+
+        $.post("{% url 'update_prod_graph' %}", data,
+          function (response) {
+            if (response.status == 'ok') {
+              // It's all good
+              console.log(response)
+            } else {
+              // Do something with errors
+            }
+          })
+      }
+
     </script>
 
 </body>
