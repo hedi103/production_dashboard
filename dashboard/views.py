@@ -3,8 +3,10 @@ from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 from .models import production_pvrmt
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def dashboard(request):
     temps = []
     charge = []
@@ -33,6 +35,7 @@ def dashboard(request):
 
         )
 
+@login_required
 def lissage(request):
     return render(
         request, 
@@ -40,6 +43,7 @@ def lissage(request):
         {'nbar':'lissage'}
         )
 
+@login_required
 def decalage_prod(request):
     return render(
         request, 
@@ -47,6 +51,7 @@ def decalage_prod(request):
         {'nbar':'decalage_prod'}
         )
 
+@login_required
 def regulation_freq(request):
     return render(
         request, 
@@ -54,6 +59,7 @@ def regulation_freq(request):
         {'nbar':'regulation_freq'}
         )
 
+@login_required
 @require_POST
 def update_prod_graph(request):
     charge = json.loads(request.POST.get('charge'))
