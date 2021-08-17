@@ -1,0 +1,14 @@
+{% extends './authentification.html' %}
+{% load static %}
+
+{% block avatar %}
+<img class="avatar" src="../assets/img/login.jpg" alt="...">
+{% endblock %}
+
+{% block title %}
+Logged out!
+{% endblock %}
+
+{% block substitle %}
+<a href="{% url 'login'%}">Click here to login again.</a>
+{% endblock %}
