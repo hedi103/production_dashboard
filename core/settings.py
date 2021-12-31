@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'dashboard'
+    'dashboard',
+    
 ]
 
 MIDDLEWARE = [
@@ -77,7 +78,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'production',
+        'NAME': 'kumulus',
         'USER': 'root',
         'PASSWORD': 'root',
         'HOST' :'127.0.0.1',
@@ -129,3 +130,7 @@ STATIC_URL = '/assets/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR,"assets")
 ]
+
+LOGIN_REDIRECT_URL = '/'
+LOGIN_URL = '/login'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

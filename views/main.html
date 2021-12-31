@@ -172,116 +172,77 @@
   </script>
 
 <script>
-      var ids = {{ ids| safe}}
-      var dataSetBoth= [{
-              label: "Charge",
-              fill: true,
-              borderColor: '#d346b1',
-              borderWidth: 1,
-              pointRadius: 2,
-              pointHitRadius: 50,
-              tension: 0.4,
-              data: {{ charge| safe}}
-            },
-            {
-              label: "Decharge",
-              fill: true,
-              borderColor: '#00d6b4',
-              borderWidth: 1,
-              pointRadius: 2,
-              pointHitRadius: 50,
-              tension: 0.4,
-              data: {{ decharge| safe}}
-            }
-          ];
-      
-      var options = {
+
+const DISPLAY = true;
+const BORDER = true;
+const CHART_AREA = true;
+const TICKS = true;
+
+  var ctx = document.getElementById('myChart').getContext('2d');
+  var myChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: {{ labels | safe}},
-        datasets: dataSetBoth
+          labels: {{ labels| safe}},
+          datasets: [{
+              label: 'Humidité',
+              data: {{ data| safe}} , 
+              backgroundColor: ["#1d7af3","#f3545d","#fdaf4b"],
+              borderWidth : 2 , 
+              radius : 0, 
+              borderColor: ["#1d7af3","#f3545d","#fdaf4b"],
+          }]
       },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        scales: {
-                    xAxes: [{
-                            display: true,
-                            scaleLabel: {
-                                display: true,
-                                labelString: 'Month'
-                            }
-                        }],
-                    yAxes: [{
-                            display: true,
-                            ticks: {
-                                beginAtZero: true,
-                                steps: 10,
-                                stepValue: 5,
-                                max: 100
-                            }
-                        }]
-                },
-        onHover: function(e) {
-          const point = e.chart.getElementsAtEventForMode(e, 'nearest', { intersect: true }, false)
-          if (point.length) e.native.target.style.cursor = 'grab'
-          else e.native.target.style.cursor = 'default'
-        },
-        plugins: {
-          dragData: {
-            round: 1,
-            showTooltip: true,
-            onDragStart: function(e, datasetIndex, index, value) {
-              //console.log(e)
-            },
-            onDrag: function(e, datasetIndex, index, value) {              
-              e.target.style.cursor = 'grabbing'
-              //console.log(e, datasetIndex, index, value)
-            },
-            onDragEnd: function(e, datasetIndex, index, value) {
-              e.target.style.cursor = 'default' 
-              console.log(datasetIndex, index, value)
-            },
-          }
-        }
-      }
-    }
-
-    var ctx2 = document.getElementById('chartJSContainer').getContext('2d');
-    var graph = new Chart(ctx2, options);
-
-    function saveModif() {
-      $.ajax({
-          type: "POST",
-          url: "{% url 'update_prod_graph' %}",
-          data: {csrfmiddlewaretoken: "{{ csrf_token }}",
-              text: graph.data},
-          success: function (response) {
-            alert(response);
-          }
-    });
-    }
-
-    function saveModif2() {
-        data = {
-          csrfmiddlewaretoken: "{{ csrf_token }}",
-          'charge': JSON.stringify(graph.data.datasets[0].data),
-          'decharge': JSON.stringify(graph.data.datasets[1].data),
-          'ids':"{{ ids| safe}}"
-        }
-
-        $.post("{% url 'update_prod_graph' %}", data,
-          function (response) {
-            if (response.status == 'ok') {
-              // It's all good
-              console.log(response)
-            } else {
-              // Do something with errors
+     
+      options: { 
+          maintainAspectRatio : false, 
+          responsive : true, 
+          animations : {
+            radius : {
+              duration : 400,
+              easing : 'linear',
+              loop : (context) => context.active
             }
-          })
-      }
+          },
+          hoverRadius : 12,
+          hoverBackgroundColor : 'yellow',
+          interaction : {
+            mode : 'index',
+            intersect : false,
+            axis : 'x'
+          },
+          plugins : {
+            tooltips : {
+              bodySpacing : 4,
+              xPadding : 10,
+              yPadding : 10,
+              usePointStyle : true
+            }
+          },
+          layout : {
+            padding : {left:15,right:15,top:15,bottom:15}
+          },
+          scales: {
+              y: {
+                grid : {
+                  display : DISPLAY,
+                  drawBorder : BORDER,
+                  drawOnChartArea : CHART_AREA,
+                  drawTicks : TICKS,
+                  min : 1000,
+                  max : 1200, 
+                  beginAtZero: true
+                }
+                  
+              }
+          }
+      },   
+  });
 
-    </script>
+  
+
+
+  </script>
+
 
 </body>
 

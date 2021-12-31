@@ -1,38 +1,38 @@
 import json
 from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
-from .models import production_pvrmt
+from .models import Ems
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def dashboard(request):
     temps = []
-    charge = []
-    decharge = []
-    ids = []
+    data = []
+    data2 = []
     
-    productionpvrmt = production_pvrmt.objects.order_by('-dt_utc')[2000:2888]
+    
+    production = Ems.objects.order_by('-id')[0:30]
 
-    for prod in productionpvrmt :
-        temps.append(prod.dt_utc.strftime("%H:%M"))
-        charge.append(prod.charge)
-        decharge.append(prod.decharge)
-        ids.append(prod.id);
+    for prod in production:
+        temps.append(prod.id)
+        data.append(prod.humidity)
+        data2.append(prod.pressure);
 
     return render(
         request, 
         "dashboard.html",
         {
             'labels': temps,
-            'charge': charge,
-            'decharge': decharge,
-            'ids': ids,
+            'data': data,
+            'data2' : data2,
             'colors': [],
             'nbar':'dashboard'
         }
 
         )
 
+@login_required
 def lissage(request):
     return render(
         request, 
@@ -40,6 +40,7 @@ def lissage(request):
         {'nbar':'lissage'}
         )
 
+@login_required
 def decalage_prod(request):
     return render(
         request, 
@@ -47,6 +48,7 @@ def decalage_prod(request):
         {'nbar':'decalage_prod'}
         )
 
+@login_required
 def regulation_freq(request):
     return render(
         request, 
@@ -54,6 +56,7 @@ def regulation_freq(request):
         {'nbar':'regulation_freq'}
         )
 
+@login_required
 @require_POST
 def update_prod_graph(request):
     charge = json.loads(request.POST.get('charge'))
